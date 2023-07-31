@@ -1,0 +1,95 @@
+/* main container of the component */
+.main {
+  position: relative;
+  width: 70%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--second-dark);
+}
+
+/* header of the conversation */
+.header {
+  position: relative;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+
+  /* background-color: var(--hover-dark); */
+}
+
+.search {
+  background-color: var(--hover-dark);
+}
+
+/* class that contains all the items for the conversation */
+.conversationList {
+  position: relative;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: all 300ms ease-in-out;
+}
+
+/* conversationList item */
+.conversation {
+  display: flex;
+  box-sizing: border-box;
+  border: 0;
+  width: 90%;
+  padding: 15px 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: var(--light);
+  font-size: 16px;
+  background-color: var(--third-dark);
+  transition: all 300ms ease-in-out;
+}
+.conversation:hover {
+  cursor: pointer;
+  background-color: var(--hover-dark);
+}
+
+.selected {
+  background-color: var(--main) !important;
+}
+
+/* media queries for this module */
+
+@media (max-width: 1200px) {
+  .conversation {
+    width: 85%;
+    padding: 13px 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .conversation {
+    width: 85%;
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 750px) {
+  .conversation {
+    padding: 10px 20px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-radius: 8px;
+    font-size: 11px;
+  }
+}

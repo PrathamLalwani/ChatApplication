@@ -1,0 +1,25 @@
+.home {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sendButton {
+  border-radius: 50%;
+  background-color: var(--main);
+  border: none;
+  padding: 5px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--light);
+}
+.sendButton:hover {
+  cursor: pointer;
+}

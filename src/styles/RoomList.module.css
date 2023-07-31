@@ -1,0 +1,95 @@
+.roomList {
+  position: relative;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: var(--first-dark);
+  transition: all 300ms ease-in-out;
+}
+
+.selected {
+  background-color: var(--main) !important;
+  /* color: var(--light); */
+}
+
+.room {
+  width: 60px;
+  height: 48%;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-bottom: 20px; */
+  font-size: 35px;
+  transition: all ease-out 200ms;
+  background-color: var(--second-dark);
+  color: var(--light);
+}
+
+.room:hover {
+  background-color: var(--hover-main);
+  cursor: pointer;
+}
+
+.onIconHover {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  opacity: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 0px;
+  transition: all ease-out 200ms;
+}
+
+.room:hover .onIconHover {
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 20px;
+  opacity: 1;
+  z-index: 300;
+  background-color: var(--first-dark);
+  font-size: 14px;
+  transform: translateX(130%);
+}
+
+/* media queries for this module starts here */
+
+@media (max-width: 1200px) {
+  .room {
+    width: 50px;
+    border-radius: 13px;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .room {
+    width: 45px;
+    border-radius: 11px;
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 800px) {
+  .room {
+    width: 40px;
+    border-radius: 8px;
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 750px) {
+  .room {
+    width: 35px;
+    border-radius: 7px;
+    font-size: 23px;
+  }
+}

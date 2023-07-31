@@ -1,0 +1,112 @@
+/* classes that are used in ChatElement component for Chat page */
+
+.chatElement {
+  width: 95%;
+  padding: 10px 15px;
+  color: var(--light);
+  /* border-radius: 10px; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  word-wrap: break-word;
+}
+.chatElement:hover {
+  background-color: var(--hover-dark);
+}
+
+.thisUser {
+  background-color: var(--third-dark);
+}
+
+.otherUser {
+  background-color: var(--third-dark);
+}
+
+.photoText {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(to right bottom, var(--light), #e4dfff);
+  font-size: 22px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--first-dark);
+}
+
+.content {
+  width: calc(95% - 50px);
+  word-wrap: break-word;
+}
+
+.username {
+  font-size: 22px;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.message {
+  font-size: 16px;
+  font-weight: 300;
+  word-wrap: break-word;
+}
+
+.photoImg {
+  width: 50px;
+  height: 50px;
+}
+
+/* media query for this module */
+
+@media (max-width: 1024px) {
+  .chatElement {
+    padding: 8px 15px;
+  }
+
+  .photoText {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+
+  .username {
+    font-size: 20px;
+  }
+
+  .message {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 770px) {
+  .photoText {
+    width: 33px;
+    height: 33px;
+    font-size: 18px;
+  }
+
+  .username {
+    font-size: 18px;
+  }
+
+  .message {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 450px) {
+  .photoText {
+    width: 30px;
+    height: 30px;
+    font-size: 17px;
+  }
+
+  .username {
+    font-size: 17px;
+  }
+
+  .message {
+    font-size: 11px;
+  }
+}

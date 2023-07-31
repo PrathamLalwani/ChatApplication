@@ -1,0 +1,86 @@
+.main {
+  position: relative;
+  width: 55%;
+  /* height: 50%; */
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.functions {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* background-color: green; */
+}
+
+.addBtn {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: var(--second-dark);
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.addBtn:hover {
+  cursor: pointer;
+}
+
+.list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+  border-radius: 5px;
+  overflow-y: scroll;
+  overflow-wrap: break-word;
+  /* background-color: yellow; */
+}
+
+.userElementContainer {
+  position: relative;
+  height: 50px;
+}
+
+.userElement {
+  position: relative;
+  height: 90%;
+  border-radius: 5px;
+  margin: 0px 5px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: 8px 15px;
+  background-color: var(--third-dark);
+}
+
+.closeBtn {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: transparent; */
+}
+
+.closeBtn:hover {
+  cursor: pointer;
+}
+
+.closeIcon {
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
