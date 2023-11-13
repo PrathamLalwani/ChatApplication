@@ -8,11 +8,17 @@ import { API } from "../constants/names";
 import Loading from "./Loading";
 import { AddUsers } from "./AddUsers";
 
-export const AddChatForm = ({ children, onCloseForm, addUser, pmSelected }) => {
+export const AddChatForm = ({
+  children,
+  onCloseForm,
+  addChat,
+
+  pmSelected,
+}) => {
   const [userSearch, setUserSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const username = useUser().username;
-  const [usersToAdd, setUsersToAdd] = useState([]);
+  const [usersToAdd, setUsersToAdd] = useState([username]);
 
   const onUserSearchChange = (e) => {
     setUserSearch(e.target.value);
@@ -20,6 +26,7 @@ export const AddChatForm = ({ children, onCloseForm, addUser, pmSelected }) => {
 
   const onAddUserSubmit = (username) => {
     if (usersToAdd.includes(username) || username === "") return;
+    console.log(username);
     setUsersToAdd((prev) => [...prev, username]);
   };
   const onRemoveUser = (username) => {
@@ -42,7 +49,7 @@ export const AddChatForm = ({ children, onCloseForm, addUser, pmSelected }) => {
         .then((value) => {
           setLoading(false);
           console.log(value.body);
-          addUser(value.body);
+          addChat(value.body);
           onCloseForm();
         })
         .catch((err) => {
@@ -55,12 +62,13 @@ export const AddChatForm = ({ children, onCloseForm, addUser, pmSelected }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           groupName: userSearch,
-          groupMembers: [username],
+          groupMembers: usersToAdd,
         }),
       })
         .then((res) => res.json())
         .then((value) => {
           console.log(value);
+          addChat(value.body);
           setLoading(false);
         })
         .catch((err) => {
@@ -75,26 +83,27 @@ export const AddChatForm = ({ children, onCloseForm, addUser, pmSelected }) => {
 
   return (
     <div className={styles.modal}>
-      <div className={styles["form-container"]}>
+      <div className={styles.container}>
         <CustomInput
           hint={children}
           value={userSearch}
           onChange={onUserSearchChange}
-          className={styles["form-items"]}
+          // className={styles["form-items"]}
           onKeyDown={onKeyDown}
+          requireBtn={false}
         ></CustomInput>
         {loading ? (
           <Loading />
         ) : (
           <CustomButton
-            className={`${styles["form-items"]} ${styles["form-button"]}`}
+            className={`${styles.items} ${styles.button}`}
             onClick={onAddChatSubmit}
           >
             Add
           </CustomButton>
         )}
         <CustomButton
-          className={`${styles["form-items"]} ${styles["form-button"]}`}
+          className={`${styles.items} ${styles.button}`}
           onClick={onCloseForm}
         >
           Cancel

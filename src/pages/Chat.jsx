@@ -7,85 +7,10 @@ import RoomList from "../components/RoomList";
 import ConversationList from "../components/ConversationList";
 import Conversation from "../components/Conversation";
 import { SocketProvider } from "../context/SocketContext";
-
-// const groupConversations = {
-//   General: {
-//     conversationId: 0,
-//     conversationName: "General",
-//     isPersonal: false,
-
-//     messages: [
-//       {
-//         username: "Sahib",
-//         message: "Hello",
-//         conversationName: "General",
-//         isPersonal: false,
-//       },
-//       {
-//         username: "Pratham",
-//         message: "Hi",
-//         conversationName: "General",
-//         isPersonal: false,
-//       },
-//       {
-//         username: "Sahib",
-//         message: "How are you?",
-//         conversationName: "General",
-//         isPersonal: false,
-//       },
-//       {
-//         username: "Pratham",
-//         message: "I am fine",
-//         conversationName: "General",
-//         isPersonal: false,
-//       },
-//       {
-//         username: "Sahib",
-//         message: "How is your day going?",
-//         conversationName: "General",
-//         isPersonal: false,
-//       },
-//       {
-//         username: "Pratham",
-//         message: "It is going great",
-//         conversationName: "General",
-//         isPersonal: false,
-//       },
-//     ],
-//   },
-//   Random: {
-//     conversationId: 1,
-//     conversationName: "Random",
-//     isPersonal: false,
-//     messages: [
-//       {
-//         username: "Sahib",
-//         message: "randoms",
-//         conversationName: "Random",
-//       },
-//       {
-//         username: "Pratham",
-//         message: "test",
-//         conversationName: "Random",
-//       },
-//       {
-//         username: "Sahib",
-//         message: "randoms",
-//         conversationName: "Random",
-//       },
-//       {
-//         username: "Pratham",
-//         message: "test",
-//         conversationName: "Random",
-//       },
-//       {
-//         username: "Sahib",
-//         message: "randoms",
-//         conversationName: "Random",
-//       },
-//     ],
-//   },
-// };
+import MemberList from "../components/MemberList";
+import CustomButton from "../components/CustomButton";
+import { HiOutlineMenuAlt2 } from "react-icons/hi";
+import { BsFillPeopleFill } from "react-icons/bs";
 
 const Chat = () => {
   const usernameContext = useUser();
@@ -93,10 +18,12 @@ const Chat = () => {
   const [pmSelected, setPMSelected] = useState(true);
   const [currentMessages, setCurrentMessages] = useState([]);
   const navigate = useNavigate();
-  const [conversationList, setConversationList] = useState([]);
+  const [conversationList, setConversationList] = useState({});
   const [currentConversation, setCurrentConversation] = useState("");
   const personalConversations = useRef({});
   const groupConversations = useRef({});
+  const [sideBarClosed, setSideBarClosed] = useState(false);
+  const [memberBarClosed, setMemberBarClosed] = useState(false);
   const onMenuSelect = (e) => {
     const pmSelected =
       e.currentTarget.getAttribute("title") === "Personal Messages";
@@ -104,7 +31,7 @@ const Chat = () => {
     // update messages using updateMessages function.
   };
 
-  const onAddUser = (user) => {
+  const onAddChat = (user) => {
     if (pmSelected) {
       let maxConversationId = 0;
       for (const key in personalConversations.current) {
@@ -143,33 +70,41 @@ const Chat = () => {
       );
     } else {
       setConversationList(groupConversations.current);
-      onConversationSelect(undefined);
+      onConversationSelect(
+        groupConversations.current[Object.keys(groupConversations.current)[0]]
+      );
     }
   }, [pmSelected]);
 
   useEffect(() => {
-    console.log(username);
     if (username == null) return;
-    console.log(`${API.server}private-chat/${username}`);
+
     fetch(`${API.server}private-chat/${username}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         personalConversations.current = data;
         setConversationList(personalConversations.current);
+        if (Object.keys(personalConversations.current).length > 0) {
+          onConversationSelect(
+            personalConversations.current[
+              Object.keys(personalConversations.current)[0]
+            ]
+          );
+        }
       })
       .catch((err) => {
         console.log(err);
       });
-    // fetch(`${API.server}group-chat/${username}`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-  }, [username]);
+
+    fetch(`${API.server}group-chat/${username}`)
+      .then((res) => res.json())
+      .then((data) => {
+        groupConversations.current = data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [username, navigate]);
 
   const onConversationSelect = (element) => {
     if (element === undefined) {
@@ -198,25 +133,68 @@ const Chat = () => {
     // console.log(currentConversation, conversationList);
   }, [username, navigate]);
 
+  const onMenuBtnClick = () => {
+    setSideBarClosed((value) => !value);
+  };
+
+  const onAccountBtnClick = () => {
+    setMemberBarClosed((value) => !value);
+  };
+
   return (
     <SocketProvider username={username}>
       <div className={styles.main}>
-        <div className={styles.sideBar}>
+        <div
+          className={`${styles.sideBar} ${
+            sideBarClosed ? styles.sideBarClosed : styles.sideBarOpen
+          }`}
+        >
           <RoomList onMenuSelect={onMenuSelect} pmSelected={pmSelected} />
           <ConversationList
             conversationList={conversationList}
             selectedConversation={currentConversation}
             onConversationSelect={onConversationSelect}
             pmSelected={pmSelected}
-            onAddUser={onAddUser}
+            onAddChat={onAddChat}
+            onCloseSideBar={onMenuBtnClick}
           />
         </div>
-        <Conversation
-          messages={currentMessages}
-          addMessage={addMessage}
-          pmSelected={pmSelected}
-          conversationName={currentConversation}
-        />
+        <div className={styles.container}>
+          <div className={styles.menu}>
+            <CustomButton className={styles.menuBtn} onClick={onMenuBtnClick}>
+              <HiOutlineMenuAlt2 />
+            </CustomButton>
+            <div className={styles.menuTitle}>@ {currentConversation}</div>
+            <CustomButton
+              className={styles.menuBtn}
+              onClick={onAccountBtnClick}
+            >
+              <BsFillPeopleFill />
+            </CustomButton>
+          </div>
+          <Conversation
+            messages={currentMessages}
+            addMessage={addMessage}
+            pmSelected={pmSelected}
+            conversationName={currentConversation}
+          />
+        </div>
+        <div
+          className={`${styles.memberBar} ${
+            memberBarClosed ? styles.memberBarClosed : styles.memberBarOpen
+          }`}
+        >
+          <MemberList
+            username={username}
+            onCloseMemberBar={onAccountBtnClick}
+            list={
+              conversationList.hasOwnProperty(currentConversation)
+                ? conversationList[currentConversation].members
+                : []
+            }
+            showMemberBar={memberBarClosed}
+          />
+        </div>
       </div>
     </SocketProvider>
   );

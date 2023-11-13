@@ -1,24 +1,26 @@
-import styles from "../styles/Input.module.css";
 import React from "react";
+import styles from "../styles/Input.module.css";
+import CustomButton from "./CustomButton";
+import { IoIosSend } from "react-icons/io";
 
 const CustomInput = ({
   hint,
-  width,
-  // fontSize,
   onChange,
   value,
   multiple,
   maxLen,
   minLen,
   onKeyDown,
-  style,
+  className,
+  onButtonClick,
+  requireBtn = true,
 }) => {
   return (
-    <div style={{ width: width == null ? "40%" : width }}>
+    <div className={`${styles.container} ${className}`}>
       <input
-        className={`${styles.input} ${style}`}
+        className={styles.input}
         placeholder={hint == null ? "enter the text" : hint}
-        inputMode="text"
+        inputMode={"text"}
         value={value == null ? "" : value}
         onChange={onChange}
         multiple={multiple}
@@ -26,6 +28,11 @@ const CustomInput = ({
         minLength={minLen}
         onKeyDown={onKeyDown}
       />
+      {requireBtn ? (
+        <CustomButton onClick={onButtonClick} className={styles.btn}>
+          <IoIosSend />
+        </CustomButton>
+      ) : null}
     </div>
   );
 };

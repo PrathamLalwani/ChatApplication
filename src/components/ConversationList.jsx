@@ -4,13 +4,17 @@ import CustomButton from "./CustomButton";
 import CustomInput from "./CustomInput";
 import { AddChatForm } from "./AddChatForm";
 import { createPortal } from "react-dom";
+import { IoIosClose } from "react-icons/io";
+import { AiOutlineUserAdd } from "react-icons/ai";
 
 const ConversationList = ({
   conversationList,
   onConversationSelect,
   selectedConversation,
   pmSelected,
-  onAddUser,
+  onAddChat,
+  onAddGroup,
+  onCloseSideBar,
 }) => {
   const [search, setSearch] = useState("");
   const [showAddUserFrom, setShowAddUserFrom] = useState(false);
@@ -23,7 +27,6 @@ const ConversationList = ({
   };
 
   const RenderList = ({ list }) => {
-    // console.log(list);
     return useMemo(() => {
       return Object.keys(list).map((key, index) => {
         let item = list[key];
@@ -39,6 +42,11 @@ const ConversationList = ({
               onConversationBtnClick(item);
             }}
           >
+            <img
+              className={styles.conversationImg}
+              src={`https://robohash.org/${item.conversationName}?`}
+              alt={item.conversationName}
+            />
             {item.conversationName}
           </CustomButton>
         );
@@ -48,29 +56,32 @@ const ConversationList = ({
 
   return (
     <div className={styles.main}>
-      <div className={styles.header}>
-        <CustomInput
-          hint={"Search"}
-          minLen={1}
-          width={"90%"}
-          value={search}
-          style={styles.search}
-          onChange={onChangeSearch}
-        />
+      <div className={styles.heading}>
+        <div className={styles.title}>
+          {pmSelected ? "Personal" : "Group"} Messages
+        </div>
+        {/* <CustomButton onClick={onCloseSideBar} className={styles.closeBtn}>
+            <IoIosClose />
+          </CustomButton> */}
       </div>
+      <CustomInput
+        hint={"Search"}
+        minLen={1}
+        value={search}
+        className={styles.search}
+        onChange={onChangeSearch}
+        requireBtn={false}
+      />
       <div className={styles.conversationList}>
         <RenderList list={conversationList} />
-        {/* <RenderList list={conversationList.filter(filterConversation)} /> */}
-        {/* <RenderList
-          list={Object.keys(conversationList).forEach(filterConversation)}
-        /> */}
+
         <CustomButton
-          className={styles.conversation}
+          className={`${styles.conversation} ${styles.addBtn}`}
           onClick={() => {
             setShowAddUserFrom(true);
           }}
         >
-          {"+"}
+          <AiOutlineUserAdd />
         </CustomButton>
         {showAddUserFrom &&
           createPortal(
@@ -79,7 +90,8 @@ const ConversationList = ({
               onCloseForm={() => {
                 setShowAddUserFrom(false);
               }}
-              addUser={onAddUser}
+              addChat={onAddChat}
+              addGroup={onAddGroup}
             >{`Add ${pmSelected ? "User" : "Group"}`}</AddChatForm>,
             document.body
           )}

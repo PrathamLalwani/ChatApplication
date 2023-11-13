@@ -3,7 +3,7 @@ import Space from "./Space";
 import styles from "../styles/ChatElement.module.css";
 
 const ChatElement = ({ element, username, index }) => {
-  const firstLetter = element.username.toUpperCase().substring(0, 1);
+  const datetime = new Date(element.time);
 
   return (
     <div
@@ -12,10 +12,23 @@ const ChatElement = ({ element, username, index }) => {
       }`}
       key={`${element.username}${index}`}
     >
-      <div className={styles.photoText}>{firstLetter}</div>
+      <div className={styles.photoText}>
+        <img
+          className={styles.profilePicture}
+          src={`https://robohash.org/${element.username}?`}
+          alt="user"
+        />
+      </div>
       <Space width={"10px"} />
       <div className={styles.content}>
-        <div className={styles.username}>{element.username}</div>
+        <div className={styles.userInfo}>
+          <div className={styles.username}>{element.username}</div>
+          <Space width={"10px"} />
+          <div className={styles.date}>
+            {datetime.toDateString()} {datetime.getHours()}:
+            {datetime.getMinutes()}:{datetime.getSeconds()}
+          </div>
+        </div>
         <div className={styles.message}>{element.message}</div>
       </div>
     </div>

@@ -1,14 +1,10 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useUser } from "../context/UsernameContext";
 import { useSocket } from "../context/SocketContext.js";
-import { IoIosSend } from "react-icons/io";
 import styles from "./../styles/Conversation.module.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ChatElement from "./ChatElement";
 import CustomInput from "./CustomInput";
-import CustomButton from "./CustomButton";
-import Space from "./Space";
-// import { useNavigate } from "react-router-dom";
 
 const Conversation = ({
   messages,
@@ -26,17 +22,19 @@ const Conversation = ({
   };
 
   const onSendMessage = (e) => {
+    let time = Date.now();
     if (message) {
       addMessage({
         username: username,
         message: message,
+        time: time,
       });
       socket.emit("send-message", {
         message: message,
         username: username,
         isPersonal: pmSelected,
         conversationName: conversationName,
-        time: Date.now().toString(),
+        time: time.toString(),
       });
       setMessage("");
     }
@@ -78,24 +76,20 @@ const Conversation = ({
           })}
         </InfiniteScroll>
       </div>
-      <div className={styles.textbox}>
-        <CustomInput
-          onChange={onChangeInputText}
-          onKeyDown={onKeyDown}
-          width={"90%"}
-          hint={`Message ${conversationName}`}
-          value={message}
-          multiple={true}
-          maxLen={1024}
-          minLen={1}
-        />
-        <Space width={"10px"} />
-        <CustomButton
-          className={styles.sendButton}
-          onClick={onSendMessage}
-          children={<IoIosSend size={22} />}
-        />
-      </div>
+      {conversationName && (
+        <div className={styles.textbox}>
+          <CustomInput
+            onChange={onChangeInputText}
+            onKeyDown={onKeyDown}
+            hint={`Message ${conversationName}`}
+            value={message}
+            multiple={true}
+            maxLen={1024}
+            minLen={1}
+            onButtonClick={onSendMessage}
+          />
+        </div>
+      )}
     </div>
   );
 };

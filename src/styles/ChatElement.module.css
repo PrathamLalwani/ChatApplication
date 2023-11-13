@@ -1,9 +1,10 @@
 /* classes that are used in ChatElement component for Chat page */
 
 .chatElement {
-  width: 95%;
-  padding: 10px 15px;
-  color: var(--light);
+  position: relative;
+  width: 100%;
+  padding: 10px 0px;
+  color: var(--text);
   /* border-radius: 10px; */
   display: flex;
   justify-content: flex-start;
@@ -11,39 +12,63 @@
   word-wrap: break-word;
 }
 .chatElement:hover {
-  background-color: var(--hover-dark);
+  /* background-color: var(--hover-dark); */
+  filter: brightness(1.2);
 }
 
 .thisUser {
-  background-color: var(--third-dark);
+  background-color: var(--background);
 }
 
 .otherUser {
-  background-color: var(--third-dark);
+  background-color: var(--background);
 }
 
 .photoText {
+  position: relative;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(to right bottom, var(--light), #e4dfff);
-  font-size: 22px;
-  font-weight: 600;
+  /* background: linear-gradient(to right bottom, var(--light), #e4dfff); */
+  /* font-size: 22px; */
+
+  /* font-weight: 600; */
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--first-dark);
+  /* color: var(--first-dark); */
 }
-
+.profilePicture {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 .content {
+  position: relative;
   width: calc(95% - 50px);
   word-wrap: break-word;
+}
+
+.userInfo {
+  position: relative;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
 }
 
 .username {
   font-size: 22px;
   font-weight: 400;
   word-wrap: break-word;
+}
+
+.date {
+  font-size: 12px;
+  font-weight: 300;
+  word-wrap: break-word;
+  color: var(--grey);
 }
 
 .message {
@@ -53,60 +78,7 @@
 }
 
 .photoImg {
+  position: relative;
   width: 50px;
   height: 50px;
-}
-
-/* media query for this module */
-
-@media (max-width: 1024px) {
-  .chatElement {
-    padding: 8px 15px;
-  }
-
-  .photoText {
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
-  }
-
-  .username {
-    font-size: 20px;
-  }
-
-  .message {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 770px) {
-  .photoText {
-    width: 33px;
-    height: 33px;
-    font-size: 18px;
-  }
-
-  .username {
-    font-size: 18px;
-  }
-
-  .message {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 450px) {
-  .photoText {
-    width: 30px;
-    height: 30px;
-    font-size: 17px;
-  }
-
-  .username {
-    font-size: 17px;
-  }
-
-  .message {
-    font-size: 11px;
-  }
 }

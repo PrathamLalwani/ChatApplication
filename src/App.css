@@ -1,14 +1,19 @@
 :root {
-  --main: #e55858;
-  --hover-main: #272629;
-  --first-dark: #08090c;
-  --second-dark: #35363a;
-  --third-dark: #202020;
-  --fourth-dark: #2e2a41;
-  --hover-dark: #282828;
-  --light: white;
-  --search: rgb(230, 230, 230);
-  --text-box: rgb(252, 252, 253);
+  --primary: hsl(28, 100%, 50%);
+  --primary-shade: hsl(24, 97%, 39%);
+  --secondary: #303030;
+  --accent: white;
+  --text: white;
+  --background: #1b1b1b;
+  --background-shade: #3f3d3d;
+  --error: hsl(4, 100%, 45%);
+  --success: hsl(120, 100%, 45%);
+  --warning: hsl(48, 100%, 67%);
+  --primary-gradient: linear-gradient(
+    180deg,
+    var(--primary),
+    var(--background)
+  );
 }
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
@@ -21,5 +26,5 @@
   width: 100%;
   height: 100vh;
   /* background: linear-gradient(var(--main), 20%, var(--primary-dark)); */
-  background-color: var(--third-dark);
+  background-color: var(--background);
 }

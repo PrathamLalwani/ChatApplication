@@ -27,6 +27,7 @@
   color: white;
   border: none;
   outline: none;
+  margin-left: 10px;
 }
 
 .addBtn:hover {
@@ -47,32 +48,34 @@
 
 .userElementContainer {
   position: relative;
-  height: 50px;
+  height: max-content;
 }
 
 .userElement {
   position: relative;
   height: 90%;
   border-radius: 5px;
-  margin: 0px 5px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   font-size: 18px;
   padding: 8px 15px;
-  background-color: var(--third-dark);
+  margin: 5px;
+  background-color: var(--primary-color);
 }
 
 .closeBtn {
   position: relative;
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 100%;
   border-radius: 50%;
   border: none;
   outline: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: transparent; */
+  background-color: transparent;
 }
 
 .closeBtn:hover {
@@ -82,5 +85,5 @@
 .closeIcon {
   position: relative;
   width: 25px;
-  height: 25px;
+  height: 100%;
 }

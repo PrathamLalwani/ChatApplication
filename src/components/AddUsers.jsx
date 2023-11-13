@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import CustomButton from "./CustomButton";
 import styles from "../styles/AddUsers.module.css";
 import CustomInput from "./CustomInput";
-import { IoCloseCircle } from "react-icons/io5";
+import { IoCloseCircle, IoCloseCircleOutline } from "react-icons/io5";
 import Space from "./Space";
+import { AiOutlineClose } from "react-icons/ai";
+import { useUser } from "../context/UsernameContext";
 
 // const UserButton = ({ username, removeUserButton }) => {
 //   console.log(username);
@@ -17,6 +19,7 @@ import Space from "./Space";
 
 export const AddUsers = ({ usersToAdd, onAddUserSubmit, onRemoveUser }) => {
   const [userSearch, setUserSearch] = useState("");
+  const username = useUser().username;
   const onUserSearchChange = (e) => {
     setUserSearch(e.target.value);
   };
@@ -37,7 +40,7 @@ export const AddUsers = ({ usersToAdd, onAddUserSubmit, onRemoveUser }) => {
         <CustomInput
           hint={"Username to add"}
           minLen={1}
-          width={"90%"}
+          requireBtn={false}
           value={userSearch}
           onChange={onUserSearchChange}
         ></CustomInput>
@@ -56,7 +59,9 @@ export const AddUsers = ({ usersToAdd, onAddUserSubmit, onRemoveUser }) => {
                 className={styles.closeBtn}
                 onClick={removeUser(user)}
               >
-                <IoCloseCircle className={styles.closeIcon} />
+                {user !== username && (
+                  <AiOutlineClose className={styles.closeIcon} />
+                )}
               </CustomButton>
             </div>
           </div>
