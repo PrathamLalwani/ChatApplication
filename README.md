@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+I apologize for the formatting issue. It looks like the spacing was affected. Here's the corrected markdown:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Chat Application
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This is a simple chat application that enables users to chat with each other. The application is built using Node.js, Express.js, and Socket.io.
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Chat Application](#chat-application)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Contribution](#contribution)
+  - [Test](#test)
+  - [Features](#features)
+  - [Questions](#questions)
+  - [Credits](#credits)
+  - [Screenshots](#screenshots)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+To install dependencies, run the following:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm install
+```
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+After installing the dependencies, run the application with:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+node server.js
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The application will be accessible at http://localhost:3000.
 
-### `npm run eject`
+## License
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This repository is licensed under the MIT license.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contribution
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This repository is personal and is not accepting contributions.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Test
 
-## Learn More
+To run tests, use the following command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+npm test
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Features
 
-### Code Splitting
+- Allows users to:
+  - Create a username
+  - Chat with other users
+  - Create a room
+  - Join a room
+  - Leave a room
+  - See who is in the room
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Questions
 
-### Analyzing the Bundle Size
+If you have any questions about this repository, feel free to contact me at [prathamlalwani33@gmail.com](mailto:prathamlalwani33@gmail.com). You can also view more of my work on GitHub at [PrathamLalwani](https://github.com/PrathamLalwani).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Credits
 
-### Making a Progressive Web App
+- [PrathamLalwani](https://github.com/PrathamLalwani)
+- [w3schools](https://www.w3schools.com/)
+- [Stack Overflow](https://stackoverflow.com/)
+- [Node.js](https://nodejs.org/en/)
+- [Express.js](https://expressjs.com/)
+- [Socket.io](https://socket.io/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Screenshots
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Image 1](./Screenshots/AddUserPage.png)
+![Image 2](./screenshots/image2.png)

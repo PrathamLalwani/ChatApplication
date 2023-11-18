@@ -1,0 +1,61 @@
+.container {
+  width: 40vw;
+  height: 50vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--user-card);
+  transition: all 300ms ease-in-out;
+}
+
+.iconContainer {
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--error);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 300ms ease-in-out;
+}
+
+.icon {
+  color: var(--text);
+  transition: all 300ms ease-in-out;
+}
+
+.title {
+  color: var(--error);
+  font-weight: 700;
+  transition: all 300ms ease-in-out;
+  text-align: center;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.errorString {
+  color: var(--search-text);
+  transition: all 300ms ease-in-out;
+  text-align: center;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.button {
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--error);
+  color: var(--text);
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 300ms ease-in-out;
+}
+
+.button:hover {
+  cursor: pointer;
+  transform: scale(110%);
+}

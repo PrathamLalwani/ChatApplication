@@ -1,27 +1,25 @@
 .container {
-  width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: var(--background-shade);
+  background-color: var(--textbox);
   padding: 0px 0px 0px 5px;
   border-radius: 5px;
   overflow: hidden;
   transition: all 200ms ease-in-out;
 }
-.container:focus-within {
+/* .container:focus-within {
   border: 1px solid var(--primary);
-}
+} */
 
 .input {
-  padding: 10px;
   position: relative;
   width: 100%;
+  padding: 10px;
   border: none 0px #000;
   outline: none;
   border-radius: 5px;
-  font-size: 16px;
-  color: var(--light);
+  color: var(--text);
   background-color: transparent;
   text-overflow: ellipsis;
 }
@@ -29,10 +27,9 @@
 .btn {
   width: 40px;
   height: 40px;
-  font-size: 18px;
   box-shadow: 0px 5px 10px #00000000;
-  background-color: var(--background-shade);
-  color: var(--light);
+  color: var(--main);
+  background-color: transparent;
   outline: none;
   border: none;
   display: flex;

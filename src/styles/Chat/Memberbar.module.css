@@ -1,0 +1,128 @@
+.main {
+  position: relative;
+  width: 480px;
+  height: 100%;
+  background-color: var(--sidebar-bg);
+  transition: all 300ms ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* part-1 */
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 30%;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.userWallpaper {
+  position: relative;
+  width: 100%;
+  height: 80%;
+  background-image: url("../../assets/images/bg_wallpaper.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 0px 0px 30px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userInfo {
+  position: absolute;
+  top: 80%;
+  width: 60%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--user-profile);
+  color: var(--text);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logoutBtn {
+  position: relative;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: var(--accent);
+}
+
+.logoutBtn:hover {
+  cursor: pointer;
+}
+
+/* part-2 */
+.line {
+  position: relative;
+  width: 90%;
+  height: 1px;
+  border-radius: 10px;
+  background-color: var(--accent);
+}
+
+/* part-3 */
+.memberInfo {
+  position: relative;
+  width: 90%;
+  height: 10%;
+  /* background-color: red; */
+  padding: 0rem 0.5rem;
+  color: var(--accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* part-4 */
+
+.list {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  /* background-color: yellow; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listElement {
+  position: relative;
+  width: 90%;
+  padding: 0.5rem 0rem;
+  /* background-color: red; */
+}
+
+@media (max-width: 800px) {
+  .header {
+    height: 25%;
+  }
+
+  .userInfo {
+    padding: 0.3rem 0.8rem;
+  }
+
+  .memberInfo {
+    height: 8%;
+  }
+
+  .list {
+    height: 67%;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    width: 350px;
+    /* display: none; */
+  }
+}

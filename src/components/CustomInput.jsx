@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../styles/Input.module.css";
-import CustomButton from "./CustomButton";
+import styles from "../styles/Common/Input.module.css";
+import Button from "./BaseComponents/Button";
 import { IoIosSend } from "react-icons/io";
 
 const CustomInput = ({
@@ -11,14 +11,16 @@ const CustomInput = ({
   maxLen,
   minLen,
   onKeyDown,
-  className,
+  containerClassName,
+  inputClassName,
+  btnClassName,
   onButtonClick,
   requireBtn = true,
 }) => {
   return (
-    <div className={`${styles.container} ${className}`}>
+    <div className={`${styles.container} ${containerClassName}`}>
       <input
-        className={styles.input}
+        className={`${inputClassName} ${styles.input}`}
         placeholder={hint == null ? "enter the text" : hint}
         inputMode={"text"}
         value={value == null ? "" : value}
@@ -29,9 +31,12 @@ const CustomInput = ({
         onKeyDown={onKeyDown}
       />
       {requireBtn ? (
-        <CustomButton onClick={onButtonClick} className={styles.btn}>
+        <Button
+          onClick={onButtonClick}
+          className={`${btnClassName} ${styles.btn}`}
+        >
           <IoIosSend />
-        </CustomButton>
+        </Button>
       ) : null}
     </div>
   );

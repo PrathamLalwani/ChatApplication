@@ -1,14 +1,33 @@
 :root {
-  --primary: hsl(28, 100%, 50%);
-  --primary-shade: hsl(24, 97%, 39%);
-  --secondary: #303030;
+  --main: #e27612;
+  --main-shade: hsl(24, 97%, 39%);
+  /* --background-shade: #3f3d3d; */
+
+  --user-profile: #1e1e1e;
+  --sidebar-bg: #313131;
+  --user-card: var(--sidebar-bg);
   --accent: white;
   --text: white;
-  --background: #1b1b1b;
-  --background-shade: #3f3d3d;
+  --sub-text: #c4c4c4;
+  --search-text: #d9d9d9;
+  --search-textbox: #525252;
+  --textbox: #1b1b1b;
+  --msg-hint: #525252;
+
+  --text-size-xs: 0.56rem;
+  --text-size-sm: 0.75rem;
+  --text-size-md: 1rem;
+  --text-size-lg: 1.33rem;
+  --text-size-xl: 1.78rem;
+  --text-size-2xl: 2.37rem;
+  --text-size-3xl: 3.16rem;
+  --text-size-4xl: 4.21rem;
+  --text-size-5xl: 5.61rem;
+  font-size: 18px;
   --error: hsl(4, 100%, 45%);
   --success: hsl(120, 100%, 45%);
   --warning: hsl(48, 100%, 67%);
+
   --primary-gradient: linear-gradient(
     180deg,
     var(--primary),
@@ -25,6 +44,5 @@
 .app {
   width: 100%;
   height: 100vh;
-  /* background: linear-gradient(var(--main), 20%, var(--primary-dark)); */
-  background-color: var(--background);
+  background-color: var(--user-card);
 }

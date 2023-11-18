@@ -2,15 +2,11 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
 import { API, paths } from "../constants/names";
 import { useUser } from "../context/UsernameContext";
-import styles from "../styles/Chat.module.css";
-import RoomList from "../components/RoomList";
-import ConversationList from "../components/ConversationList";
-import Conversation from "../components/Conversation";
+import styles from "../styles/Chat/Chat.module.css";
 import { SocketProvider } from "../context/SocketContext";
-import MemberList from "../components/MemberList";
-import CustomButton from "../components/CustomButton";
-import { HiOutlineMenuAlt2 } from "react-icons/hi";
-import { BsFillPeopleFill } from "react-icons/bs";
+import Sidebar from "../components/Sidebar";
+import MessageContent from "../components/MessageContent";
+import Memberbar from "../components/Memberbar";
 
 const Chat = () => {
   const usernameContext = useUser();
@@ -24,10 +20,9 @@ const Chat = () => {
   const groupConversations = useRef({});
   const [sideBarClosed, setSideBarClosed] = useState(false);
   const [memberBarClosed, setMemberBarClosed] = useState(false);
-  const onMenuSelect = (e) => {
-    const pmSelected =
-      e.currentTarget.getAttribute("title") === "Personal Messages";
-    setPMSelected(pmSelected);
+
+  const onChatSelect = (pmSelect) => {
+    setPMSelected(pmSelect);
     // update messages using updateMessages function.
   };
 
@@ -144,57 +139,33 @@ const Chat = () => {
   return (
     <SocketProvider username={username}>
       <div className={styles.main}>
-        <div
-          className={`${styles.sideBar} ${
-            sideBarClosed ? styles.sideBarClosed : styles.sideBarOpen
-          }`}
-        >
-          <RoomList onMenuSelect={onMenuSelect} pmSelected={pmSelected} />
-          <ConversationList
-            conversationList={conversationList}
-            selectedConversation={currentConversation}
-            onConversationSelect={onConversationSelect}
-            pmSelected={pmSelected}
-            onAddChat={onAddChat}
-            onCloseSideBar={onMenuBtnClick}
-          />
-        </div>
-        <div className={styles.container}>
-          <div className={styles.menu}>
-            <CustomButton className={styles.menuBtn} onClick={onMenuBtnClick}>
-              <HiOutlineMenuAlt2 />
-            </CustomButton>
-            <div className={styles.menuTitle}>@ {currentConversation}</div>
-            <CustomButton
-              className={styles.menuBtn}
-              onClick={onAccountBtnClick}
-            >
-              <BsFillPeopleFill />
-            </CustomButton>
-          </div>
-          <Conversation
-            messages={currentMessages}
-            addMessage={addMessage}
-            pmSelected={pmSelected}
-            conversationName={currentConversation}
-          />
-        </div>
-        <div
-          className={`${styles.memberBar} ${
-            memberBarClosed ? styles.memberBarClosed : styles.memberBarOpen
-          }`}
-        >
-          <MemberList
-            username={username}
-            onCloseMemberBar={onAccountBtnClick}
-            list={
-              conversationList.hasOwnProperty(currentConversation)
-                ? conversationList[currentConversation].members
-                : []
-            }
-            showMemberBar={memberBarClosed}
-          />
-        </div>
+        <Sidebar
+          onChatSelect={onChatSelect}
+          pmSelected={pmSelected}
+          conversationList={conversationList}
+          currentConversation={currentConversation}
+          onAddChat={onAddChat}
+          onConversationSelect={onConversationSelect}
+          isSideBarClosed={sideBarClosed}
+        />
+        <MessageContent
+          addMessage={addMessage}
+          currentConversation={currentConversation}
+          currentMessages={currentMessages}
+          onAccountBtnClick={onAccountBtnClick}
+          onMenuBtnClick={onMenuBtnClick}
+          pmSelected={pmSelected}
+        />
+        <Memberbar
+          username={username}
+          list={
+            currentConversation !== null &&
+            conversationList.hasOwnProperty(currentConversation)
+              ? conversationList[currentConversation].members
+              : []
+          }
+          pmSelected={pmSelected}
+        />
       </div>
     </SocketProvider>
   );

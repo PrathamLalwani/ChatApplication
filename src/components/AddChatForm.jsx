@@ -1,20 +1,14 @@
 import React from "react";
-import styles from "../styles/AddChatForm.module.css";
+import styles from "../styles/Chat/AddChatForm.module.css";
 import CustomInput from "./CustomInput";
 import { useState } from "react";
-import CustomButton from "./CustomButton";
+import Button from "./BaseComponents/Button";
 import { useUser } from "../context/UsernameContext";
 import { API } from "../constants/names";
 import Loading from "./Loading";
 import { AddUsers } from "./AddUsers";
 
-export const AddChatForm = ({
-  children,
-  onCloseForm,
-  addChat,
-
-  pmSelected,
-}) => {
+export const AddChatForm = ({ children, onCloseForm, addChat, pmSelected }) => {
   const [userSearch, setUserSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const username = useUser().username;
@@ -29,9 +23,11 @@ export const AddChatForm = ({
     console.log(username);
     setUsersToAdd((prev) => [...prev, username]);
   };
+
   const onRemoveUser = (username) => {
     setUsersToAdd((prev) => prev.filter((x) => x !== username));
   };
+
   const onAddChatSubmit = (e) => {
     setUserSearch("");
     setLoading(true);
@@ -76,6 +72,7 @@ export const AddChatForm = ({
         });
     }
   };
+
   const onKeyDown = (e) => {
     if (e.key === "Enter") onAddChatSubmit(e);
     if (e.key === "Escape") onCloseForm();
@@ -95,19 +92,19 @@ export const AddChatForm = ({
         {loading ? (
           <Loading />
         ) : (
-          <CustomButton
+          <Button
             className={`${styles.items} ${styles.button}`}
             onClick={onAddChatSubmit}
           >
             Add
-          </CustomButton>
+          </Button>
         )}
-        <CustomButton
+        <Button
           className={`${styles.items} ${styles.button}`}
           onClick={onCloseForm}
         >
           Cancel
-        </CustomButton>
+        </Button>
       </div>
       {!pmSelected && (
         <AddUsers
