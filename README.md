@@ -1,4 +1,3 @@
-
 # Chat Application
 
 ## Description
