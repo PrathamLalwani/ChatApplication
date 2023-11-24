@@ -76,10 +76,8 @@ const Login = () => {
 
         {/* statement */}
         <div className={styles.statement}>
-          <span className={styles.statementColored}>Instant</span>
-          <span className={styles.statementText}>
-            {" "}
-            Conversations at Your Fingertips!
+          <span className={styles.statementColored}>
+            Instant Connection, Effortless Communication.
           </span>
         </div>
 
