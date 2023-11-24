@@ -1,4 +1,3 @@
-I apologize for the formatting issue. It looks like the spacing was affected. Here's the corrected markdown:
 
 # Chat Application
 
