@@ -79,4 +79,4 @@ If you have any questions about this repository, feel free to contact me at [pra
 ## Screenshots
 
 ![Image 1](./Screenshots/LoginPage.png)
-![Image 2](./screenshots/ChatPage.png)
+![Image 2](./Screenshots/ChatPage.png)
