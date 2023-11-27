@@ -32,7 +32,7 @@ npm install
 After installing the dependencies, run the application with:
 
 ```
-node server.js
+npm start
 ```
 
 The application will be accessible at http://localhost:3000.
@@ -78,5 +78,5 @@ If you have any questions about this repository, feel free to contact me at [pra
 
 ## Screenshots
 
-![Image 1](./Screenshots/AddUserPage.png)
-![Image 2](./screenshots/image2.png)
+![Image 1](./Screenshots/LoginPage.png)
+![Image 2](./screenshots/ChatPage.png)

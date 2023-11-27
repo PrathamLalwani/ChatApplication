@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import styles from "../styles/Chat/MessageContent.module.css";
 import commonStyles from "../styles/Common/Common.module.css";
 import { useUser } from "../context/UsernameContext";
-import { useSocket } from "../context/SocketContext.js";
+import { useSocket } from "../context/SocketContext";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ChatElement from "./ChatElement";
 import CustomInput from "./CustomInput";
@@ -50,7 +50,7 @@ const MessageContent = ({
     (message) => {
       addMessage(message);
     },
-    [addMessage]
+    [addMessage],
   );
 
   useEffect(() => {

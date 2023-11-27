@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
 
   const providerValue = useMemo(
     () => ({ username, setUsername }),
-    [username, setUsername]
+    [username, setUsername],
   );
 
   return (

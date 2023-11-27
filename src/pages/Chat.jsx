@@ -34,7 +34,7 @@ const Chat = () => {
           const element = personalConversations.current[key];
           maxConversationId = Math.max(
             maxConversationId,
-            element.conversationId
+            element.conversationId,
           );
         }
       }
@@ -48,7 +48,7 @@ const Chat = () => {
           const element = groupConversations[key];
           maxConversationId = Math.max(
             maxConversationId,
-            element.conversationId
+            element.conversationId,
           );
         }
       }
@@ -61,12 +61,12 @@ const Chat = () => {
       onConversationSelect(
         personalConversations.current[
           Object.keys(personalConversations.current)[0]
-        ]
+        ],
       );
     } else {
       setConversationList(groupConversations.current);
       onConversationSelect(
-        groupConversations.current[Object.keys(groupConversations.current)[0]]
+        groupConversations.current[Object.keys(groupConversations.current)[0]],
       );
     }
   }, [pmSelected]);
@@ -83,7 +83,7 @@ const Chat = () => {
           onConversationSelect(
             personalConversations.current[
               Object.keys(personalConversations.current)[0]
-            ]
+            ],
           );
         }
       })
