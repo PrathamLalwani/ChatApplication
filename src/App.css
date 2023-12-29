@@ -1,20 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 :root {
-  --main: #e27612;
-  --main-shade: hsl(24, 97%, 39%);
-  /* --background-shade: #3f3d3d; */
-
-  --user-profile: #1e1e1e;
-  --sidebar-bg: #313131;
-  --user-card: var(--sidebar-bg);
-  --accent: white;
-  --text: white;
-  --sub-text: #c4c4c4;
-  --search-text: #d9d9d9;
-  --search-textbox: #525252;
-  --textbox: #1b1b1b;
-  --msg-hint: #525252;
-
   --text-size-xs: 0.56rem;
   --text-size-sm: 0.75rem;
   --text-size-md: 1rem;
@@ -35,15 +20,54 @@
     var(--background)
   );
 }
-
-* {
+body {
+  background-color: var(--background);
+}
+*,
+*::after,
+*::before {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Exo 2", sans-serif;
+  font-family: "Ubuntu", sans-serif;
+  color: var(--text);
 }
 .app {
   width: 100%;
   height: 100vh;
   background-color: var(--user-card);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: #151004;
+    --background: #ecebe9;
+    --primary: #ff8424;
+    --secondary: #dbd9d6;
+    --accent: #17baad;
+    --error: #a30000;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #fbf6ea;
+    --background: #161513;
+    --primary: #ff872c;
+    --secondary: #292724;
+    --accent: #45e8da;
+    --error: #8f0000;
+  }
+}
+button {
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  outline: 0;
+  border: 0;
+  height: 2.2rem;
+  width: fit-content;
+  font-weight: bold;
+  vertical-align: center;
+  text-align: center;
+  font-size: var(--text-size-md);
+  color: var(--text);
 }

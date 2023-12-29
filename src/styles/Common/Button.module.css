@@ -1,0 +1,35 @@
+.primary {
+  background-color: var(--primary);
+  outline: 2px solid var(--primary);
+}
+
+.lg {
+  font-size: var(--text-size-lg);
+  padding: 1.5rem 1rem;
+  line-height: 1px;
+}
+.base {
+  font-size: var(--text-size-md);
+  padding: 1.25rem 0.7rem;
+  line-height: 1px;
+}
+.xl {
+  font-size: var(--text-size-md);
+  padding: 1.5rem 1rem;
+  line-height: 1px;
+}
+.xl2 {
+  font-size: var(--text-size-2xl);
+  padding: 1.5rem 1rem;
+  line-height: 1px;
+}
+.secondary {
+  background-color: var(--background);
+  outline: 2px solid var(--primary);
+}
+.sm {
+  font-size: var(--text-size-sm);
+  padding: 0.15rem 0.5rem;
+  line-height: 1px;
+  height: 2rem;
+}

@@ -9,7 +9,7 @@ export const REGEX = {
 
 export const API = {
   // server: "http://192.168.1.70:5000/",
-  server: "http://192.168.1.70:5000/",
+  server: "http://192.168.1.79:5000/",
   // add all the endpoints of API.
   checkConn: "",
   addUser: "add-user",

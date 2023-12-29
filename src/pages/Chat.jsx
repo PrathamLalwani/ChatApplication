@@ -119,7 +119,7 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    if (username == null) {
+    if (username === null) {
       navigate(paths.login_path, {
         replace: true,
       });

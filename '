@@ -1,0 +1,122 @@
+import styles from "../styles/Login/HomePage.module.css";
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import CustomInput from "../components/CustomInput";
+import { useNavigate } from "react-router-dom";
+import { API, REGEX, paths } from "../constants/names";
+import { useUser } from "../context/UsernameContext";
+import { IoLogoWechat } from "react-icons/io5";
+import Button from "../components/BaseComponents/Button";
+import HeroImg from "../assets/HomePageBackground.svg?react";
+import SelicateImg from "../assets/Selicate.svg?react";
+import FlowderImg from "../assets/Flowder.svg?react";
+import GilgamitImg from "../assets/Gilgamit.svg?react";
+import PlantifyImg from "../assets/Plantify.svg?react";
+import DolmosImg from "../assets/Dolmos.svg?react";
+import LoginModal from "../components/LoginModal";
+import { createPortal } from "react-dom";
+const HomePage = () => {
+  const { username, setUsername } = useUser();
+ // const navigate = useNavigate();
+  const timeoutRef = useRef(null);
+  const loginModalRef = useRef(null)
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
+
+  const onChangeUsername = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const onKeyDown = (e) => {
+    // console.log(e.key);
+    if (e.key === "Enter") onSendButtonClick();
+  };
+
+  const loginButtonHandler = () => {
+    console.log("button is clicked");
+  };
+  const signUpButtonHandler = () => {};
+  const onSendButtonClick = (e) => {
+    const value = REGEX.username.exec(username);
+
+    if (value === null) {
+      // show error here
+    } else {
+      fetch(`${API.server}${API.user}/${username}`)
+        .then((res) => {
+          navigate(paths.chat_path, { replace: true, state: { username } });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  return (
+    <main className={styles.main}>
+      {createPortal(<LoginModal ref= />, document.getElementById("root"))}
+      {/* <SignUpModal /> */}
+      <nav className={styles.navigation}>
+        <div className={styles.logo}>
+          <IoLogoWechat className={styles.logoIcon} />{" "}
+          <span className={styles.logoText}>QuikChat</span>
+        </div>
+        <ul className={styles.navButtons}>
+          <li>
+            <Button onClick={loginButtonHandler} type="primary" size="sm">
+              Login
+            </Button>
+          </li>
+          <li>
+            <Button onClick={signUpButtonHandler} type="secondary" size="sm">
+              Sign Up
+            </Button>
+          </li>
+        </ul>
+      </nav>
+
+      <div className={styles.layoutGrid}>
+        {" "}
+        <section className={styles.heroSection}>
+          <div className={styles.heroText}>
+            <p>Instant Connection, Effortless Communication</p>
+            <p>Where speed meets simplicity</p>
+            <p>
+              QuickChat makes conversation an effortless exchange, connecting
+              you with the world in the blink of an eye.
+            </p>
+            <Button size="base">Get Started</Button>
+          </div>
+          <HeroImg className={styles.heroImg} />
+        </section>
+        <section className={styles.socialProof}>
+          <span>Trusted By:</span>
+          <div className={styles.socialProofCompanies}>
+            <div className={styles.companyImg}>
+              <SelicateImg></SelicateImg> <span>Selicate</span>
+            </div>
+            <div className={styles.companyImg}>
+              <FlowderImg></FlowderImg> <span>Flowder</span>
+            </div>
+            <div className={styles.companyImg}>
+              <GilgamitImg></GilgamitImg> <span>Gilgamit</span>
+            </div>
+            <div className={styles.companyImg}>
+              <PlantifyImg></PlantifyImg> <span>Plantify</span>
+            </div>
+            <div className={styles.companyImg}>
+              <DolmosImg></DolmosImg> <span>Dolmos</span>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div></div>
+        </section>
+      </div>
+    </main>
+  );
+};
+
+export default HomePage;

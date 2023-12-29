@@ -1,11 +1,69 @@
-.main {
-  position: absolute;
-  z-index: 10;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+.modal {
+  background-color: var(--background);
+  padding: 1.5rem 2rem;
+  /*   border: 2px solid var(--primary); */
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.5);
+  width: 25%;
+}
+.modal::backdrop {
+  background-color: var(--text);
+  opacity: 0.2;
+}
+.modal form {
+  width: 100%;
+}
+.modal h3 {
+  display: block;
+  margin: auto;
+  width: fit-content;
+  margin-bottom: 2rem;
+  font-size: var(--text-size-xl);
+}
+.modal form button {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 300ms ease-in-out;
+  flex-direction: column;
+  width: 100%;
+
+  justify-content: space-around;
+}
+.modal input {
+  display: block;
+  background: var(--secondary);
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  height: 2rem;
+  font-weight: bold;
+}
+.modal input:focus {
+  outline: 2px var(--primary) solid;
+}
+.modal form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: var(--text-size-sm);
+  text-transform: uppercase;
+}
+.modal button {
+  width: 100%;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.modal button:nth-child(1) {
+  margin-top: 2rem;
+}
+.inputError {
+  outline: 2px solid var(--error);
+}
+.errorText {
+  font-size: var(--text-size-sm);
+  color: var(--error);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
 }

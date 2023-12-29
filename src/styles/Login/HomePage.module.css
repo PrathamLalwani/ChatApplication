@@ -1,0 +1,106 @@
+.main {
+  width: min(1180px, 100vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+  padding: 0px 1rem;
+  flex-direction: column;
+  margin: auto;
+}
+.navigation {
+  display: flex;
+  position: sticky;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 0rem;
+  height: fit-content;
+  width: 100%;
+  top: 0;
+}
+.navButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style-type: none;
+  justify-content: space-evenly;
+  width: 150px;
+}
+
+.heroSection {
+  display: flex;
+  height: max-content;
+  margin-top: 10rem;
+  width: 100%;
+  justify-content: space-between;
+}
+.heroImg {
+  width: min(50%, 510px);
+  height: 500px;
+}
+.heroText {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.heroText p:nth-child(1) {
+  font-size: var(--text-size-2xl);
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+.heroText p:nth-child(2) {
+  font-size: var(--text-size-lg);
+  margin-bottom: 2rem;
+}
+.heroText p:nth-child(3) {
+  font-size: var(--text-size-md);
+  margin-bottom: 2rem;
+}
+.heroText button {
+  background-color: var(--primary);
+}
+.layoutGrid {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0px;
+  overflow: scroll;
+}
+.socialProof {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bolder;
+  font-size: var(--text-size-lg);
+  opacity: 0.5;
+  justify-content: center;
+}
+.socialProofCompanies {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.companyImg {
+  display: flex;
+  font-weight: bolder;
+  flex-direction: row;
+  font-size: var(--text-size-xl);
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: 30px;
+}
+.companyImg svg:nth-child(1) {
+  margin-right: 10px;
+}
+@media screen and (max-width: 768px) {
+  .navButtons {
+    width: 150px;
+  }
+  .navigation {
+    padding: 1rem 1rem;
+  }
+}
